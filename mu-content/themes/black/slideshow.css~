@@ -1,0 +1,79 @@
+#OuterContainer {
+	padding: 0;
+	margin: 0 auto;
+}
+
+#Container {
+	position: relative;
+	height: 200px;
+	width: 200px;
+	margin: 0 auto;
+	background-color: #dedede;
+	border: 3px solid #fd8512;
+	font-size: 0px;
+}
+
+#Photo {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 5;
+}
+
+#Loading {
+	height: 25%;
+	width: 100%;
+	position: absolute;
+	top: 40%;
+	left: 0%;
+	text-align: center;
+	z-index: 0;
+	line-height: 0;
+}
+
+#LinkContainer {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 10;
+}
+
+#PrevLink, #NextLink {
+	cursor: pointer;
+	width: 48%;
+	height: 100%;
+	background: transparent url(img/c.gif) no-repeat; /* Trick IE into showing hover */
+	display: block;
+}
+
+#PrevLink span, #NextLink span { display: none; }
+
+#PrevLink { left: 0; float: left; }
+#NextLink { right: 0; float: right; }
+
+/* background image for IE */
+#PrevLink:hover, #PrevLink:visited:hover { background: url(img/prev_minus.gif) 20% 50% no-repeat; }
+#NextLink:hover, #NextLink:visited:hover { background: url(img/next_plus.gif) 80% 50% no-repeat; }
+
+/* backgroudn image for compliant browsers */
+#LinkContainer>#PrevLink:hover, #LinkContainer>#PrevLink:visited:hover { background: url(img/prev_chevron.png) 20% 50% no-repeat; }
+#LinkContainer>#NextLink:hover, #LinkContainer>#NextLink:visited:hover { background: url(img/next_chevron.png) 80% 50% no-repeat; }
+
+#CaptionContainer {
+	margin: 0 auto;
+	width: 200px;
+	text-align: left;
+	}
+
+#CaptionContainer p {
+	padding: 5px 10px 10px 10px;
+	font-size: 11px;
+}
+
+#Counter {
+	font-weight: bold;
+	color: #999;
+	padding-right: 5px;
+}

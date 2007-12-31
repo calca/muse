@@ -1,0 +1,43 @@
+<h2>Linee Sole e Vista</h2>
+<img src=<?php mu_page_get_file("img/occhiali-vista.jpg")?> alt="occhiali-vista" >
+<div id="linee">
+<ul>
+	<li>Ray-Ban</li>
+	<li>Gucci</li>
+	<li>Versace</li>
+	<li>Dolce&Gabbana</li>
+	<li>Versace</li>
+	<li>Prada</li>
+	<li>Salvatore Ferragamo</li>
+	<li>Dior</li>
+	<li>Giorgio Armani</li>
+	<li>Emporio Armani</li>
+	<li>Miu Miu</li>
+	<li>Le Noir Paris</li>
+	<li>Sferolex</li>
+	<li>Valentino</li>
+	<li>Imatra</li>
+	<li>Persol</li>
+	<li>Bikkembergs</li>
+	<li>Pierre Cardin</li>
+	<li>Clic</li>
+	<li>Roberto Cavalli</li>
+	<li>Mikly</li>
+	<li>Tom Ford</li>
+</ul>
+</div>
+
+<br />
+
+<div id="lenti">
+<h2>Lenti a contatto</h2>
+<img src=<?php mu_page_get_file("img/lenti.jpg")?> alt="lenti" >
+<ul>
+	<li>Focus Dailes &euro; 15.50 </li>
+	<li>Acuvue 2 &euro; 19.50 </li>
+	<li>O2 Optix &euro; 17.00 </li>
+	<li>FreshLook &euro; 16.00 </li>
+	<li>Acuvue 1-Day &euro; 21.00</li>
+	<li>Coopervision Frequencys &euro; 13.00 (Conferzione da 3 lenti mensili)</li>
+</ul>
+</div>
