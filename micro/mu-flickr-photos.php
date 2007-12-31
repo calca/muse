@@ -13,7 +13,8 @@ function mu_flickr_photo_set_list(){
 		$infoSet = $flickr->photosets_getInfo($set);
 		$html .= "\n<li class=\"singleSet\">";	
 		$html .= "<a href=\"set/".$set."\">";
-		$html .= "<img class=\"thumbSet\" src=\"".thumbImageFromFlickr($flickr,$infoSet['primary'])."\" />";
+		$html .= "<img class=\"thumbSet\" ";
+		$html .= "src=\"".thumbImageFromFlickr($flickr,$infoSet['primary'])."\" />";
 		$html .= "</a>";
 		$html .= "<a href=\"set/".$set."\">";
 		$html .= "<div class=\"titleSet\">".htmlentities($infoSet['title'])."</div>";
@@ -78,7 +79,6 @@ function thumbImageFromFlickr($flickr,$photoID){
 
 function urlImageFromFlickr($flickr,$photoID){
 	$photo = $flickr->photos_getInfo($photoID);
-	var_dump($photo["urls"]["url"]);
 	return $photo["urls"]["url"][0]["_content"];
 }
 

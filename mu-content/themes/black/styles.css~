@@ -2,10 +2,11 @@ body{
 	background: black;
 	border: 0px;
 	padding: 0px;
+	margin: 0px;
 }
 
 #flickrGallery
 {
-	width: 800px !important;
-	height: 600px !important;
+	width: 500px !important;
+	height: 333px !important;
 } 
