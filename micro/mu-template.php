@@ -1,5 +1,9 @@
 <?php
 
+function mu_photo_header(){
+	print mu_smooth_gallery_header();
+}
+
 function mu_header(){
 	mu_theme_import("header.php");
 }
@@ -25,8 +29,5 @@ function mu_theme_get_file($file){
 	} else {
 		print ( "mum_theme_get_file :: Failed to load $_load");
 	}
-}
-
-
-
+}
 ?>

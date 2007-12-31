@@ -3,7 +3,7 @@
 // for mu gallery
 
 // Flickr API key
-$MU_CONFIG["flickrKey"] = '';
+$MU_CONFIG["flickrKey"] = 'c64c634e6f93c70dcf86c798726be366';
 
 // Flickr UserName
 $MU_CONFIG["flickrUser"] = 'calca';
@@ -12,7 +12,7 @@ $MU_CONFIG["flickrUser"] = 'calca';
 $MU_CONFIG["fileSets"] = "sets.txt";
 
 // Theme Gallery
-$MU_CONFIG["theme"] = "dark";
+$MU_CONFIG["theme"] = "black";
 
 /////////////////////////////////////
 // MU Configuration
