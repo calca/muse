@@ -1,52 +1,40 @@
 <?php
 
-
-function mu_get_pagina(){
-
-	$_dir = mu_page_dir();
-	$_url = $_SERVER["REQUEST_URI"];
-	
-	$_load = $_dir.$_url."index.php";
-	if ( is_file($_load)) return $_load;
-
-	$_load = $_dir.$_url."/"."index.php";
-	if ( is_file($_load)) return $_load;
-
-	$_load = $_dir.$_url.".php";
-	if (is_file($_load))  return $_load;
+function mu_theme_select_page(){
+	$_dir = mu_theme_dir();
+	$_urlParse = parse_url($_SERVER["REQUEST_URI"]);
 		
-	$_load = $_dir.rtrim($_url,"/").".php";
-	if (is_file($_load)) return $_load;
+	if ( strpos($_urlParse->path) > 0 )
+		mu_load_photo_set();
 	
-	return $_dir."/404.php";
-	
+	mu_load_index_gallery();	
 }
 	
-function mu_page_dir(){
-		
-		return MU_CONTENT."/".MU_PAGE_DIR;
-		
-		}
-
 function mu_theme_dir(){
-	
-		return MU_CONTENT."/".MU_THEME_DIR."/".MU_THEME."/";
-		
-		}
+	return  $GLOBALS["MU_CONFIG"]["MU_CONTENT_DIR"]
+		."/".$GLOBALS["MU_CONFIG"]["MU_THEME_DIR"]
+		."/".$GLOBALS["MU_CONFIG"]["MU_THEME"]."/";
+}
+
 
 function mu_theme_import($file){
 	
-		$_load = mu_theme_dir().$file;
-				
-		if ( is_file($_load)){	
-			include($_load);
-		} else {
-			print ( "mum_theme_import :: Failed to load $file");
-		}
-		
-		return ;
+	$_filePath = mu_theme_dir().$file;
+	
+	if ( is_file($_filePath) ){
+		include($_filePath);
+	} else {
+		print("mu_theme_import :: Failed to load $_filePath");
+	}
 }
 	
 
+function mu_load_index_gallery(){
+	mu_theme_import("index.php");
+}
+
+function mu_load_photo_set(){
+	mu_theme_import("photoSet.php");
+}
 
 ?>
