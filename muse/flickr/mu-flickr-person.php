@@ -12,7 +12,7 @@ function mu_flickr_person_buddy_icon(){
 	$url .= idFlickrUser($flickr);
 	$url .= ".jpg";
 	
-	if ( @file_get_contents($url) )
+	if ( is_valid_url($url) )
 		return $url;
 
 	// Standard buddy icon
@@ -48,5 +48,21 @@ function init_mu_flickr_person_info(){
 	$flickr = loginToFlickr();
 	$GLOBALS['MU_INFO_FLICK_USER'] = infoFlickUser($flickr);
 }
+
+function is_valid_url($url){
+	$ch = curl_init();
+	$timeout = 5; // set to zero for no timeout
+	curl_setopt ($ch, CURLOPT_URL, 'http://example.com');
+	curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
+	curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+	$file_contents = curl_exec($ch);
+	curl_close($ch);
+
+	if ( $file_contents )
+		return true;
+		
+	return false;
+}
+
 
 ?>
