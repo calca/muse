@@ -13,23 +13,22 @@ function mu_flickr_photo_set_list(){
 	$att = $set->attributes();
 		if ( !empty($att["id"]) )
 			$html .=  load_head_photoset_gallery($flickr,$virtualPath,(string)$att["id"]);
-		else if ( !empty($att["tag"]) )
-			$html .=  load_head_tag_gallery($flickr,$virtualPath,(string)$att["tag"]);
+		else if ( !empty($att["tags"]) )
+			$html .=  load_head_tag_gallery($flickr,
+				$virtualPath,(string)$att["tags"],(string)$att["tagmode"]);
 	}
 	$html .= "\n</ul>\n";
 	return $html;
 }
 
 function mu_flickr_photo_set_slideshow(){
-	$url = split("/",rtrim($_SERVER["REQUEST_URI"],"/"));
-	$search = $url[count($url)-1];
-
+	list($search, $tagmode) = find_search_parameters();
 	$flickr = loginToFlickr();
 	
 	if ( is_numeric($search) )
 		$listOfPhotos = list_photos_from_setID($flickr,$search);
 	else if ( is_string($search) )
-		$listOfPhotos = list_photos_from_tag($flickr,$search);
+		$listOfPhotos = list_photos_from_tag($flickr,$search,$tagmode);
 	
 	if ( count($listOfPhotos) <= 0 ) return "No photos aviable";
 	
@@ -52,17 +51,24 @@ function mu_flickr_photo_set_slideshow(){
 
 ///////////////////////////////////////
 // Private Functions
-function load_head_tag_gallery($flickr,$virtualPath,$tag){
-	$showThumb = $GLOBALS["MU_CONFIG"]["showThumbImageInPhotoSetList"];
-	$args[] = array();
-	$args["tags"] = $tag;
-	$args["user_id"] = idFlickrUser($flickr);	
-	$args["per_page"] = 1;
-	$photosTag = $flickr->photos_search($args);
-		
-	$firstPhoto = $photosTag["photo"][0];
-	return load_head_html_gallery($flickr,$virtualPath,strtolower($tag),
-		$firstPhoto['id'],ucfirst(strtolower($tag)));
+function load_head_tag_gallery($flickr,$virtualPath,$tags,$tagmode){
+	$Photos = list_photos_from_tag($flickr,$tags,$tagmode,1);
+	$firstPhoto = $Photos[0];
+	return load_head_html_gallery($flickr,$virtualPath,tagsToUrl($tags,$tagmode),
+		$firstPhoto['id'],firstTag($tags));
+}
+
+function tagsToUrl($value,$tagMode){
+	$tags = str_replace(",","/",strtolower($value));
+	$tags .= "/".$tagMode;
+	return $tags;
+}
+
+function firstTag($value){
+	$tags = split(",",$value);
+	if ( !empty($tags[0]) )
+		$value = $tags[0];
+	return ucfirst(strtolower($value));
 }
 
 function load_head_photoset_gallery($flickr,$virtualPath,$setID){
@@ -82,7 +88,8 @@ function load_head_html_gallery($flickr,$virtualPath,$id,$idImage,$title,$descri
 	$html .= "<a href=\"".$virtualPath."/".$id."\">";
 	$html .= "<div class=\"titleSet\">".htmlentities($title)."</div>";
 	$html .= "</a>";
-	$html .= html_description($description);
+	if ( $GLOBALS["MU_CONFIG"]["showDescriptionInPhotoSetList"] )
+		$html .= html_description($description);
 	$html .= "</li>";
 	return $html;
 }
@@ -106,4 +113,26 @@ function html_description($description){
 	}	
 	return;
 }
+
+function find_search_parameters(){
+	$urlParse = parse_url($_SERVER["REQUEST_URI"]);
+	$urlPath = $urlParse["path"];
+	$virtualPath = $GLOBALS["MU_CONFIG"]["MU_VIRTUAL_PATH_GALLERY"];
+	$position = strpos($urlPath,$virtualPath);
+	if ( $position < 0 ) die ("mu-flickr-photos :: find_search_parameters() No VirtualPath");
+
+	$withoutVirtualPath = str_replace($virtualPath,"",$urlPath);	
+	$withoutAny = str_replace("any","",trim($withoutVirtualPath,"/"));
+	$withoutAll = str_replace("all","",trim($withoutAny,"/"));
+	$res[] = str_replace("/",",",trim($withoutAll,"/"));
+	
+	if ( strpos($urlPath,"any") > 0 )
+		$res[] = "any";
+	else if ( strpos($urlPath,"all") > 0 )
+		$res[] = "all";
+	else
+		$res[] = "";
+		
+	return $res;
+	}
 ?>

@@ -33,11 +33,15 @@ function infoFlickUser($flickr){
 	return $flickr->people_getInfo($id);
 }
 
-function list_photos_from_tag($flickr,$tag){
+function list_photos_from_tag($flickr,$tags,$tagmode,$perPage = ""){
+	if ( empty($perPage) )
+		$perPage = $GLOBALS["MU_CONFIG"]["maxPhotosForSlideshow"];
+		
 	$args[] = array();
-	$args["tags"] = $tag;
+	$args["tags"] = $tags;
 	$args["user_id"] = idFlickrUser($flickr);
-	$args["per_page"] = $GLOBALS["MU_CONFIG"]["maxPhotosForSlideshow"];
+	$args["per_page"] = $perPage;
+	$args["tag_mode"] = $tagmode;
 	$photosTag = $flickr->photos_search($args);
 	return $photosTag["photo"];
 }

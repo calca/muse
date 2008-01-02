@@ -14,7 +14,10 @@ function mu_smooth_gallery_header(){
 							timed: ".$GLOBALS["MU_CONFIG"]["galleryTimed"].",
 							useThumbGenerator: false,
 							thumbHeight: 75,
-							thumbWidth: 75
+							thumbWidth: 75,
+							showCarousel: ".$GLOBALS["MU_CONFIG"]["galleryShowCarousel"].",
+							showInfopane: ".$GLOBALS["MU_CONFIG"]["galleryShowInfopane"].",
+							embedLinks: ".$GLOBALS["MU_CONFIG"]["galleryEmbedLinks"].",
 				});
 			}
 			window.addEvent('domready', startGallery);

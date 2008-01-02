@@ -28,8 +28,13 @@ function load_xml_configuration(){
 		$GLOBALS["MU_CONFIG"]["title"] = (string)$options->title;
 		$GLOBALS["MU_CONFIG"]["theme"] = (string)$options->theme;
 		$GLOBALS["MU_CONFIG"]["galleryTimed"] = (string)$options->galleryTimed;
+		$GLOBALS["MU_CONFIG"]["galleryShowCarousel"] = (string)$options->galleryShowCarousel;
+		$GLOBALS["MU_CONFIG"]["galleryShowInfopane"] = (string)$options->galleryShowInfopane;
+		$GLOBALS["MU_CONFIG"]["galleryEmbedLinks"] = (string)$options->galleryEmbedLinks;
 		$GLOBALS["MU_CONFIG"]["showThumbImageInPhotoSetList"] = 
 			stringToBoolean((string)$options->showThumbImageInPhotoSetList);
+		$GLOBALS["MU_CONFIG"]["showDescriptionInPhotoSetList"] = 
+			stringToBoolean((string)$options->showDescriptionInPhotoSetList);
 	} else {
 		die("mu-config :: load_xml_configuration: could not load ".$file);
 	}

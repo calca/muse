@@ -13,16 +13,26 @@
 		<title>Photos</title>
 		<!-- Show Thumb Image In PhotoSet List true|false -->
 		<showThumbImageInPhotoSetList>true</showThumbImageInPhotoSetList>
-		<!-- Max number of photos for tag slideshows (default 500) -->
+		<!-- Show Description In PhotoSet List true|false -->
+		<showDescriptionInPhotoSetList>false</showDescriptionInPhotoSetList>
+		<!-- Max number of photos for tag slideshows (max allowed 500) -->
 		<maxPhotosForSlideshow>9</maxPhotosForSlideshow>
 		<!-- Gallery Timed true|false -->
 		<galleryTimed>true</galleryTimed>
+		<!-- Gallery Show Carousel true|false -->
+		<galleryShowCarousel>true</galleryShowCarousel>
+		<!-- Gallery Show Infopane true|false -->
+		<galleryShowInfopane>true</galleryShowInfopane>
+		<!-- Gallery Embed Links true|false -->
+		<galleryEmbedLinks>true</galleryEmbedLinks>
 	</gallery>
 	<!-- Muse Flickr Gallery Albums -->
 	<albums>
 		<set id="72157603054228800" />
 		<set id="72157602763019381" />
 		<set id="72157594556245697" />
-		<set tag="milano" />
+		<set tags="milano" />
+		<set tags="c,luce" tagmode="all"/>
+		<set tags="luce,c" tagmode="any"/>
 	</albums>
 </muse>
