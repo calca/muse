@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<muse>
+	<!-- Muse Flickr Gallery Options-->
+	<gallery>
+		<!-- Flicker API Keys, http://www.flickr.com/services/api/keys/ -->
+		<flickrKey>c64c634e6f93c70dcf86c798726be366</flickrKey>
+		<!-- Flickr ID or Flickr Username -->
+		<flickrID></flickrID>
+		<flickrUser>calca</flickrUser>
+		<!-- Max number of photos for tag slideshows (default 500) -->
+		<maxPhotosForSlideshow>9</maxPhotosForSlideshow>
+		<!-- Theme for Muse Flickr Gallery -->
+		<theme>black</theme>
+	</gallery>
+	<!-- Muse Flickr Gallery Albums -->
+	<albums>
+		<set id="72157603054228800" />
+		<set id="72157602763019381" />
+		<set id="72157594556245697" />
+		<set tag="milano" />
+	</albums>
+</muse>

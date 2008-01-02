@@ -1,5 +1,5 @@
 <?php
-
+include("mu-config.php");
 include("mu-functions.php");
 include("mu-flickr-photos.php");
 include("mu-smooth-gallery.php");

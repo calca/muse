@@ -3,8 +3,10 @@
 function mu_theme_select_page(){
 	$_dir = mu_theme_dir();
 	$_urlParse = parse_url($_SERVER["REQUEST_URI"]);
-			
-	if ( strpos($_urlParse["path"],'set') > 0 )
+	$virtualPath = $GLOBALS["MU_CONFIG"]["MU_VIRTUAL_PATH_GALLERY"];	
+	$xmlFile = $GLOBALS["MU_CONFIG"]["MU_XMLFILENAME"];
+	
+	if ( strpos($_urlParse["path"],$virtualPath) > 0 )
 		return mu_load_photo_set();
 	
 	if ( empty($_urlParse["path"]) || $_urlParse["path"] == "/" )
@@ -16,7 +18,6 @@ function mu_theme_dir(){
 		."/".$GLOBALS["MU_CONFIG"]["MU_THEME_DIR"]
 		."/".$GLOBALS["MU_CONFIG"]["theme"]."/";
 }
-
 
 function mu_theme_import($file){
 	

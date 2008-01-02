@@ -1,7 +1,5 @@
 <?php
-include("mu-config.php");
-include("micro/mu.php");
+include("muse/mu.php");
 mu_init();
-
 ?>
 
