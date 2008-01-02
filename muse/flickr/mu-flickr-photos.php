@@ -9,6 +9,7 @@ function mu_flickr_photo_set_list(){
 	// build list of sets
 	$virtualPath = $GLOBALS["MU_CONFIG"]["MU_VIRTUAL_PATH_GALLERY"];
 	$listOfSets = load_albums_xml_file();
+	$html .= "\n<ul class=".$GLOBALS["MU_CONFIG"]["MU_CSS_LIST_SETS"].">\n";
 	foreach($listOfSets as $set){
 	$att = $set->attributes();
 		if ( !empty($att["id"]) )
@@ -48,6 +49,16 @@ function mu_flickr_photo_set_slideshow(){
 	return $html;
 }
 
+function mu_flickr_photo_set_title_slideshow(){
+	list($search, $tagmode) = find_search_parameters();
+	if ( is_numeric($search) ){
+		$flickr = loginToFlickr();
+		$infoSet = $flickr->photosets_getInfo($search);
+		return htmlentities($infoSet['title']);
+	}
+	
+	return firstTag($search);	
+}
 
 ///////////////////////////////////////
 // Private Functions
@@ -78,15 +89,15 @@ function load_head_photoset_gallery($flickr,$virtualPath,$setID){
 }
 
 function load_head_html_gallery($flickr,$virtualPath,$id,$idImage,$title,$description = ""){
-	$html .= "\n<li class=\"singleSet\">";	
+	$html .= "\n<li class=\"".$GLOBALS["MU_CONFIG"]["MU_CSS_SINGLE_SET"]."\">\n";	
 	if ( $GLOBALS["MU_CONFIG"]["showThumbImageInPhotoSetList"] ){
 		$html .= "<a href=\"".$virtualPath."/".$id."\">";
-		$html .= "<img class=\"thumbSet\" ";
+		$html .= "<img class=\"".$GLOBALS["MU_CONFIG"]["MU_CSS_THUMB_IMAGE_SET"]."\" ";
 		$html .= "src=\"".thumbImageFromFlickr($flickr,$idImage)."\" />";
-		$html .= "</a>";
+		$html .= "</a>\n";
 	}
 	$html .= "<a href=\"".$virtualPath."/".$id."\">";
-	$html .= "<div class=\"titleSet\">".htmlentities($title)."</div>";
+	$html .= "<div class=\"".$GLOBALS["MU_CONFIG"]["MU_CSS_TITLE_SET"]."\">".htmlentities($title)."</div>\n";
 	$html .= "</a>";
 	if ( $GLOBALS["MU_CONFIG"]["showDescriptionInPhotoSetList"] )
 		$html .= html_description($description);
@@ -106,9 +117,9 @@ function load_albums_xml_file(){
 
 function html_description($description){
 	if ( !empty($description) ){
-		$hmtl = "<div class=\"descriptionSet\">";
+		$hmtl = "<div class=\"".$GLOBALS["MU_CONFIG"]["MU_CSS_DESCRIPTION_SET"]."\">";
 		$html .= htmlentities($description);
-		$html .= "</div>";
+		$html .= "</div>\n";
 		return $html;
 	}	
 	return;

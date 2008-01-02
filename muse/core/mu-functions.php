@@ -29,15 +29,6 @@ function mu_core_theme_import($file){
 	}
 }
 	
-function mu_core_template_get_file($file){
-	$_load = mu_core_theme_dir().$file;				
-	if ( is_file($_load)){	
-		return "/".$_load;
-	} else {
-		return "mum_theme_get_file :: Failed to load $_load";
-	}
-}
-
 function mu_core_load_index_gallery(){
 	mu_core_theme_import($GLOBALS["MU_CONFIG"]["MU_TEMPLATE_INDEX_FILE"]);
 }
@@ -45,5 +36,6 @@ function mu_core_load_index_gallery(){
 function mu_core_load_photo_set(){
 	mu_core_theme_import($GLOBALS["MU_CONFIG"]["MU_TEMPLATE_PHOTOSET_FILE"]);
 }
+
 
 ?>
