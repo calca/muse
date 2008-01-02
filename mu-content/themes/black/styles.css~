@@ -8,5 +8,5 @@ body{
 #flickrGallery
 {
 	width: 500px !important;
-	height: 333px !important;
+	height: 500px !important;
 } 

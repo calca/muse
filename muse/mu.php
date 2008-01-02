@@ -1,12 +1,14 @@
 <?php
-include("mu-config.php");
-include("mu-functions.php");
-include("mu-flickr-photos.php");
-include("mu-smooth-gallery.php");
+include("core/mu-config.php");
+include("core/mu-functions.php");
+include("flickr/mu-flickr.php");
+include("flickr/mu-flickr-person.php");
+include("flickr/mu-flickr-photos.php");
+include("smooth-gallery/mu-smooth-gallery.php");
 include("mu-template.php");
 
 function mu_init(){
-	mu_theme_select_page();
+	mu_core_select_page();
 }
 
 ?>

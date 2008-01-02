@@ -1,31 +1,15 @@
 <?php mu_header(); ?>
-<body>
-<div id="frame">
-<!-- head -->
-	<div id="head">
-	<img src=<?php mu_theme_get_file("img/otticafuse.jpg") ?> alt="ottica fusè" alt="ottica fusè">
-	</div>
-<!-- end head -->
 
-<!-- menu -->
-	<div id="tabs">
-  	<ul>
-    		<li><a href="/" title="Home">Home</a></li>
-    		<li><a href="/prodotti" title="Prodotti">Prodotti</a></li>
-    		<li><a href="/negozio" title="Negozio">Negozio</a></li>
-    		<li><a href="/dovesiamo" title="Dove Siamo">Dove siamo</a></li>
-    		<li><a href="/contatti" title="Contatti">Contatti</a></li>
-    	</ul>
-	</div>
-<!-- end menu-->
+Photos of Gianluigi Calcaterra <br />
 
-<!-- main -->
-<div id="main">
-<?php mu_page() ?>
-</div>
-<!-- end main -->
+ 
+<img src="<?php mu_photo_person_buddy_icon(); ?>" /><br />
+Nome: <?php mu_person_realname();?><br />
+Location: <?php mu_person_location();?><br />
+Photos Url: <?php mu_person_photos_url();?><br />
+Profile Url: <?php mu_person_profile_url();?><br />
 
-</div>
+<?php mu_photo_set_list(); ?>
 
 <?php mu_footer(); ?>
 		

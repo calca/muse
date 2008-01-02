@@ -7,10 +7,16 @@
 		<!-- Flickr ID or Flickr Username -->
 		<flickrID></flickrID>
 		<flickrUser>calca</flickrUser>
-		<!-- Max number of photos for tag slideshows (default 500) -->
-		<maxPhotosForSlideshow>9</maxPhotosForSlideshow>
 		<!-- Theme for Muse Flickr Gallery -->
 		<theme>black</theme>
+		<!-- Gallery Title -->
+		<title>Photos</title>
+		<!-- Show Thumb Image In PhotoSet List true|false -->
+		<showThumbImageInPhotoSetList>true</showThumbImageInPhotoSetList>
+		<!-- Max number of photos for tag slideshows (default 500) -->
+		<maxPhotosForSlideshow>9</maxPhotosForSlideshow>
+		<!-- Gallery Timed true|false -->
+		<galleryTimed>true</galleryTimed>
 	</gallery>
 	<!-- Muse Flickr Gallery Albums -->
 	<albums>
