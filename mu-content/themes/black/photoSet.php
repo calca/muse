@@ -16,7 +16,9 @@
 		<?php mu_photo_set_slideshow(); ?>
         </div>
         <div class="column span-22">
-                
+                <div class="gallery_slideshow_navigator">
+                <?php mu_photo_set_slideshow_navigator(); ?>
+                </div>
         </div>  
 	<?php mu_footer(); ?>
 </div>

@@ -8,10 +8,10 @@ function mu_flickr_photo_set_list(){
 	foreach($listOfSets as $set){
 	$att = $set->attributes();
 		if ( !empty($att["id"]) )
-			$html .=  load_head_photoset_gallery($flickr,$virtualPath,(string)$att["id"]);
+			$html .=  load_head_photoset_gallery($flickr,(string)$att["id"]);
 		else if ( !empty($att["tags"]) )
-			$html .=  load_head_tag_gallery($flickr,
-				$virtualPath,(string)$att["tags"],(string)$att["tagmode"]);
+			$html .=  load_head_tag_gallery($flickr,(string)$att["tags"],
+				(string)$att["tagmode"]);
 	}
 	$html .= "\n</ul>\n";
 	return $html;
@@ -55,12 +55,33 @@ function mu_flickr_photo_set_title_slideshow(){
 	return firstTag($search);	
 }
 
+function  mu_flickr_photo_set_slideshow_navigator(){
+
+	list($prevSet, $nextSet) =  find_prev_next_current_photo_set();
+	
+	if ( !empty($prevSet) ){
+		$link_prev = "<a href=\"";
+		$link_prev .= create_url_slideshow(tagsToUrl($prevSet["id"],$prevSet["tagmode"]));
+		$link_prev .= "\"> &laquo; Prev Album";
+		$link_prev .= "</a>";
+	}
+	if ( !empty($nextSet)  ){
+		$set = $valori[$position+1];
+		$link_next = "<a href=\"";
+		$link_next .= create_url_slideshow(tagsToUrl($nextSet["id"],$nextSet["tagmode"]));
+		$link_next .= "\">Next Album&raquo;";
+		$link_next .= "</a>";
+	}
+	$html = $link_prev . " | " . $link_next;
+	return $html;
+}
+
 ///////////////////////////////////////
 // Private Functions
-function load_head_tag_gallery($flickr,$virtualPath,$tags,$tagmode){
+function load_head_tag_gallery($flickr,$tags,$tagmode){
 	$Photos = list_photos_from_tag($flickr,$tags,$tagmode,1);
 	$firstPhoto = $Photos[0];
-	return load_head_html_gallery($flickr,$virtualPath,tagsToUrl($tags,$tagmode),
+	return load_head_html_gallery($flickr,tagsToUrl($tags,$tagmode),
 		$firstPhoto['id'],firstTag($tags));
 }
 
@@ -77,27 +98,34 @@ function firstTag($value){
 	return ucfirst(strtolower($value));
 }
 
-function load_head_photoset_gallery($flickr,$virtualPath,$setID){
+function load_head_photoset_gallery($flickr,$setID){
 	$infoSet = $flickr->photosets_getInfo($setID);
-	return load_head_html_gallery($flickr,$virtualPath,$setID,
+	return load_head_html_gallery($flickr,$setID,
 			$infoSet['primary'],$infoSet['title'],$infoSet['description']);
 }
 
-function load_head_html_gallery($flickr,$virtualPath,$id,$idImage,$title,$description = ""){
+function load_head_html_gallery($flickr,$id,$idImage,$title,$description = ""){
 	$html .= "\n<li class=\"".$GLOBALS["MU_CONFIG"]["MU_CSS_SINGLE_SET"]."\">\n";	
 	if ( $GLOBALS["MU_CONFIG"]["showThumbImageInPhotoSetList"] ){
-		$html .= "<a href=\"".$virtualPath."/".$id."\">";
+		$html .= "<a href=\"".create_url_slideshow($id)."\">";
 		$html .= "<img class=\"".$GLOBALS["MU_CONFIG"]["MU_CSS_THUMB_IMAGE_SET"]."\" ";
 		$html .= "src=\"".thumbImageFromFlickr($flickr,$idImage)."\" />";
 		$html .= "</a>\n";
 	}
-	$html .= "<a href=\"".$virtualPath."/".$id."\">";
+	$html .= "<a href=\"".create_url_slideshow($id)."\">";
 	$html .= "<div class=\"".$GLOBALS["MU_CONFIG"]["MU_CSS_TITLE_SET"]."\">".htmlentities($title)."</div>\n";
 	$html .= "</a>";
 	if ( $GLOBALS["MU_CONFIG"]["showDescriptionInPhotoSetList"] )
 		$html .= html_description($description);
 	$html .= "</li>";
 	return $html;
+}
+
+function create_url_slideshow($id){
+	$urlBase = $GLOBALS["MU_CONFIG"]["baseUrl"];
+	$virtualPath = $GLOBALS["MU_CONFIG"]["MU_VIRTUAL_PATH_GALLERY"];
+	$url = $urlBase . $virtualPath . "/" . $id;
+	return $url;
 }
 
 function load_albums_xml_file(){
@@ -140,5 +168,35 @@ function find_search_parameters(){
 		$res[] = "";
 		
 	return $res;
+}
+
+function find_prev_next_current_photo_set(){
+	list($search, $tagmode) = find_search_parameters();
+	$listOfSets = load_albums_xml_file();
+	$valori = array();
+	$position = 0; $i = 0;
+	foreach($listOfSets as $set){
+		$att = $set->attributes();
+		if ( !empty($att["id"]) )
+			$valori[]  =  array( "id"=>(string)$att["id"], "tagmode"=>"");
+		else if ( !empty($att["tags"]) )
+			$valori[] = array( "id"=>(string)$att["tags"], "tagmode"=>(string)$att["tagmode"]);
+		if ( $valori[$i]["id"] == $search )
+			$position = $i;
+		$i++;			
 	}
+	
+	if ( $position > 0 ){
+		$sets[] = $valori[$position-1];
+	} else {
+		$sets[] = "";
+	}
+	
+	if ( $position < count($valori)-1 ){
+		$sets[] = $valori[$position+1];
+	} else {
+		$sets[] = "";
+	}
+	return $sets;
+}
 ?>

@@ -25,6 +25,10 @@ function mu_photo_set_slideshow(){
 	print mu_flickr_photo_set_slideshow();
 }
 
+function mu_photo_set_slideshow_navigator(){
+	print mu_flickr_photo_set_slideshow_navigator();
+}
+
 function mu_photo_set_title_slideshow(){
 	print mu_flickr_photo_set_title_slideshow();
 }

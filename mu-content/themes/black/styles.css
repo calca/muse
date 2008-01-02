@@ -41,15 +41,15 @@ body
 	color: white;
 }
 
-.gallery_slide_show_back_link a:hover
-{
-	text-decoration: underline;
-	color: white;
-}
-
 .gallery_slide_show_back_link a:visited
 {
 	text-decoration: none;
+	color: white;
+}
+
+.gallery_slide_show_back_link a:hover
+{
+	text-decoration: underline;
 	color: white;
 }
 
@@ -95,15 +95,41 @@ Class For list of sets
 	text-decoration: none;
 	color: white;
 }
-
+.mu_single_set a:visited
+{
+	text-decoration: none;
+	color: white;
+}
 .mu_single_set a:hover
 {
 	text-decoration: underline;
 	color: white;
 }
-.mu_single_set  a:visited
+/****/
+
+/**  Gallery Slideshow Navigator **/
+.gallery_slideshow_navigator
+{
+	padding-top:  50px;
+	text-align: right;
+	letter-spacing: 4px;
+}
+
+.gallery_slideshow_navigator a
 {
 	text-decoration: none;
+	color: white;
+}
+
+.gallery_slideshow_navigator a:visited
+{
+	text-decoration: none;
+	color: white;
+}
+
+.gallery_slideshow_navigator a:hover
+{
+	text-decoration: underline;
 	color: white;
 }
 
@@ -122,13 +148,14 @@ Class For list of sets
 	color: gray;
 }
 
-.gallery_footer a:hover
+.gallery_footer  a:visited
 {
 	text-decoration: none;
 	color: gray;
 }
-.gallery_footer  a:visited
+
+.gallery_footer a:hover
 {
-	text-decoration: none;
+	text-decoration: underline;
 	color: gray;
 }
