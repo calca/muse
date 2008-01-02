@@ -1,9 +1,4 @@
 <?php
-
-include($_SERVER["DOCUMENT_ROOT"]
-	.$GLOBALS["MU_CONFIG"]["MU_CONTENT_DIR"]
-	."/libraries/phpFlickr/phpFlickr.php");
-
 function mu_flickr_photo_set_list(){
 	$flickr = loginToFlickr();
 	// build list of sets

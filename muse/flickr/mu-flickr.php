@@ -1,5 +1,8 @@
 <?php
 
+include($_SERVER["DOCUMENT_ROOT"]."/".$GLOBALS["MU_CONFIG"]["MU_CONTENT_DIR"]
+	."/libraries/phpFlickr/phpFlickr.php");
+	
 ///////////////////////////////////////
 // Private Functions
 
