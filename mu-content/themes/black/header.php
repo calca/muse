@@ -1,7 +1,7 @@
 <title><?php mu_gallery_title(); ?></title>
-<meta name="author" content="Gianluigi Calcaterra" >
+<meta name="generator" content="<?php mu_version(); ?>" >
 <META name="description" content="<?php mu_gallery_title(); ?>">
-<meta name="keywords" content="foto photos potrais galleria immagine gianluigi calcaterra" >
+<meta name="keywords" content="foto photos potrais galleria immagine" >
 <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" >
 <?php mu_photo_header() ?>
 <link rel="stylesheet" type="text/css" href=<?php mu_template_get_file("styles.css") ?> >

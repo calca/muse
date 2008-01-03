@@ -14,9 +14,14 @@ function mu_core_template_get_file($file){
 }
 
 function mu_core_template_credits(){
-	$html = "<a href=\"http://blog.duea.info/muse\" />";
-	$html .= "Muse Flickr Gallery";
+	$html = "<a href=\"".$GLOBALS["MU_CONFIG"]["MU_WEB_SITE"]."\" />";
+	$html .= $GLOBALS["MU_CONFIG"]["MU_NAME"];
 	$html .=" </a>";
+	return $html;
+}
+
+function mu_core_template_version(){
+	$html = $GLOBALS["MU_CONFIG"]["MU_NAME"] . " " .$GLOBALS["MU_CONFIG"]["MU_VERSION"];
 	return $html;
 }
 

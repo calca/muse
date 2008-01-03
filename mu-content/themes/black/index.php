@@ -11,7 +11,7 @@
         <div class="column span-16 append-1">
         	<div class="gallery_intro">
         	<a href="<?php mu_person_photos_url();?>">
-                	<img src="<?php mu_photo_person_buddy_icon(); ?>" /><br />
+                	<img src="<?php mu_person_buddy_icon(); ?>" /><br />
                 </a>
 		</div>
         </div>

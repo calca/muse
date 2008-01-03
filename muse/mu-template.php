@@ -37,7 +37,7 @@ function mu_photo_set_back_link_slideshow(){
 	print mu_core_template_base_url();
 }
 
-function mu_photo_person_buddy_icon(){
+function mu_person_buddy_icon(){
 	print mu_flickr_person_buddy_icon();
 }
 
@@ -67,5 +67,9 @@ function mu_template_get_file($file){
 
 function mu_credits(){
 	print mu_core_template_credits();
+}
+
+function mu_version(){
+	print mu_core_template_version();
 }
 ?>

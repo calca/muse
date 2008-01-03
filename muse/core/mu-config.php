@@ -17,6 +17,10 @@ $GLOBALS["MU_CONFIG"]["MU_CSS_SINGLE_SET"]= "mu_single_set";
 $GLOBALS["MU_CONFIG"]["MU_CSS_THUMB_IMAGE_SET"] = "mu_thumb_image_set";
 $GLOBALS["MU_CONFIG"]["MU_CSS_TITLE_SET"] = "mu_title_set";
 $GLOBALS["MU_CONFIG"]["MU_CSS_DESCRIPTION_SET"] = "mu_description_set";
+// Info
+$GLOBALS["MU_CONFIG"]["MU_NAME"] = "Muse Flickr Gallery";
+$GLOBALS["MU_CONFIG"]["MU_VERSION"] = "1.0.1";
+$GLOBALS["MU_CONFIG"]["MU_WEB_SITE"] = "http://blog.duea.info/projects/muse-flickr-gallery/";
 ////////////////////////////////////
 $GLOBALS["MU_CONFIG"]["fileSets"] = "mu-config.xml";
 ///////////////////////////////////
