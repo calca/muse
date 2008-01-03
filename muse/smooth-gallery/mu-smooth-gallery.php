@@ -17,7 +17,7 @@ function mu_smooth_gallery_header(){
 	$html .="\t\tthumbWidth: 75,\n";
 	$html .="\t\tshowCarousel: ".$GLOBALS["MU_CONFIG"]["galleryShowCarousel"].",\n";
 	$html .="\t\tshowInfopane: ".$GLOBALS["MU_CONFIG"]["galleryShowInfopane"].",\n";
-	$html .="\t\tembedLinks: ".$GLOBALS["MU_CONFIG"]["galleryEmbedLinks"].",\n";
+	$html .="\t\tembedLinks: ".$GLOBALS["MU_CONFIG"]["galleryEmbedLinks"]."\n";
 	$html .="\t\t});\n";
 	$html .="\t}\n";
 	$html .="window.addEvent('domready', startSmoothGallery);\n";
