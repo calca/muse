@@ -8,10 +8,10 @@ function mu_flickr_photo_set_list(){
 	foreach($listOfSets as $set){
 	$att = $set->attributes();
 		if ( !empty($att["id"]) )
-			$html .=  load_head_photoset_gallery($flickr,(string)$att["id"]);
+			$html .=  htmlentities(load_head_photoset_gallery($flickr,(string)$att["id"]));
 		else if ( !empty($att["tags"]) )
-			$html .=  load_head_tag_gallery($flickr,(string)$att["tags"],
-				(string)$att["tagmode"]);
+			$html .=  htmlentities(load_head_tag_gallery($flickr,(string)$att["tags"],
+				(string)$att["tagmode"]));
 	}
 	$html .= "\n</ul>\n";
 	return $html;
